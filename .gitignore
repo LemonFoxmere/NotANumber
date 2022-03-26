@@ -127,8 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-<<<<<<< HEAD
 
 # imgs and raw datas
 img/*
 raw/*
+networks/*
