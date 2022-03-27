@@ -34,8 +34,8 @@ train_img = (train_img - 127.5)/127.5 # normalize from -1 to 1
 gen_model = keras.models.load_model("networks/dcgan/dcgan-gen.h5")
 disc_model = keras.models.load_model("networks/dcgan/dcgan-disc.h5")
 
-x = 0
-y = 0
+x = -1
+y = -1
 inc = 0.1
 frames = -1
 
@@ -63,11 +63,23 @@ plt.imshow(tf.reshape(gen_model(np.random.randn(1,100)), (28,28)), cmap="binary"
 
 np.max(gen_model(np.random.randn(1,100)))
 
+x = 0
+y = 0
+resolution = 200
+
 # save the whole output space to a latout file for storage
 with open('raw/dcgan-out.json', 'w') as file:
-    for i in range(128):
-        for j in range(128):
-            json.dump([255 for i in range(784)], file)
+    full_map = {}
+    for i in tqdm(range(resolution)):
+        row_map={}
+        for j in range(resolution):
+            image_data = [int((i+1)*127.5) for i in gen_model(np.random.randn(1,100)).numpy().reshape(784).tolist()]
+            row_map[y] = image_data
+            y += 1
+        full_map[x] = row_map
+        x += 1
+
+    json.dump(full_map, file)
 
 
 

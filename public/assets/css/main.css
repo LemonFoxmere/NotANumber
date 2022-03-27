@@ -1,0 +1,43 @@
+:root{
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none;
+}
+
+body{
+    background-color: #e0e0e0;
+    margin:0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none;
+}
+
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* CUSTOM ATTR */
+
+#init-loading{
+    width:100vw; height:100vh;
+    position:absolute;
+    z-index: 999;
+    background-color: #ff7b00;
+}
