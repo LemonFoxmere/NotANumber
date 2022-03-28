@@ -3,22 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>app</title>
+    <title>Welcome to Firebase Hosting</title>
 
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/font.css">
+    <script defer src="/__/firebase/9.6.10/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="./assets/css/font.css">    
+    <link rel="stylesheet" href="./assets/css/main.css">    
   </head>
-  <body style="width:100vw; height:100vh">
-
-    <div id="init-loading">
-      <h1>Firebase is a firestorm of shit</h1>
+  <body>
+    <div id="loading-container" style="width:100vw; height:100vh; display:flex; justify-content: center; align-items: center; flex-direction: column;
+                                      position:fixed; left:0; top:0; z-index: 999;">
+      <section id="spinning-ring-containers" style="position: relative; width: 5rem; height: 5rem;">
+        <div id="ring3" style="border-color: #ffd220; scale: 0.7; transform: rotateX(10deg);" class="spinning-ring unselectable"></div>
+        <div id="ring2" style="border-color: #ffa620; scale: 0.8; transform: rotateY(30deg);" class="spinning-ring unselectable"></div>
+        <div id="ring1" style="border-color: #ff7f07; scale: 0.9; transform: rotateZ(40deg);" class="spinning-ring unselectable"></div>
+        <svg id="ring-check" height="100%" style="fill-rule:nonzero; clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+        xml:space="preserve" width="120%"
+        viewBox="0 0 113.647 115.272"> 
+            <path id="ring-check-path"
+            class="unselectable"
+            style="fill:none; fill-opacity:1; stroke:#f87800;stroke-width:17;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1; opacity: 0;"
+            d="M -1.4931908,61.971512 31.213422,98.151387 97.86052,24.87238"/>
+        </svg>
+      </section>
+      <h4 style="position:absolute; margin: 0; transform: translateY(6rem); opacity: 0.5;">Contacting API...</h4>
     </div>
 
-    <script defer src="app.js"></script>
+    <h1>Hi mom</h1>
+    
+    <script defer src="./assets/minjs/anime.min.js"></script>
+    <script defer src="./assets/minjs/scrolltrigger.min.js"></script>
+    <script defer src="./assets/minjs/type.js"></script>
+    
+    <script defer src="./app.js"></script>
+    <script defer src="./loadanim.js"></script>
   </body>
 </html>
