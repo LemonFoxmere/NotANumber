@@ -131,3 +131,4 @@ dmypy.json
 # imgs and raw datas
 img/*
 networks/*
+raw/*
