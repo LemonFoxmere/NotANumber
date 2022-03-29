@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>InteractiveGAN</title>
 
     <script defer src="/__/firebase/9.6.10/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/9.6.10/firebase-storage-compat.js"></script>
@@ -14,8 +14,8 @@
   </head>
   <body>
     <div id="loading-container" style="width:100vw; height:100vh; display:flex; justify-content: center; align-items: center; flex-direction: column;
-                                      position:fixed; left:0; top:0; z-index: 999;">
-      <section id="spinning-ring-containers" style="position: relative; width: 5rem; height: 5rem;">
+                                      position:fixed; left:0; top:0; z-index: 999; background-color: #ffffff83; padding:0">
+      <section id="spinning-ring-containers" style="position: relative; width: 5rem; height: 5rem; display:flex; justify-content: center; align-items: center;">
         <div id="ring3" style="border-color: #ffd220; scale: 0.7; transform: rotateX(10deg);" class="spinning-ring unselectable"></div>
         <div id="ring2" style="border-color: #ffa620; scale: 0.8; transform: rotateY(30deg);" class="spinning-ring unselectable"></div>
         <div id="ring1" style="border-color: #ff7f07; scale: 0.9; transform: rotateZ(40deg);" class="spinning-ring unselectable"></div>
@@ -28,10 +28,15 @@
             d="M -1.4931908,61.971512 31.213422,98.151387 97.86052,24.87238"/>
         </svg>
       </section>
-      <h4 style="position:absolute; margin: 0; transform: translateY(6rem); opacity: 0.5;">Contacting API...</h4>
+      <h4 id="loader-status" style="position:absolute; margin: 0; transform: translateY(6rem); opacity: 0.6; width: 80%; text-align: center; white-space: pre-wrap;">Loading API...</h4>
     </div>
 
-    <h1>Hi mom</h1>
+    <div id="main-page" style="filter: blur(13px)">
+      <h1>Hi mom</h1>
+      <p style="width:40%;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid eligendi doloribus aliquam fugit ipsa nihil fugiat soluta suscipit laborum dolorum delectus optio aperiam, libero iusto neque? Totam repudiandae eligendi velit?
+      </p>
+    </div>
     
     <script defer src="./assets/minjs/anime.min.js"></script>
     <script defer src="./assets/minjs/scrolltrigger.min.js"></script>
