@@ -1,3 +1,4 @@
+/* mobile */
 h1{
     margin:0;
     font-family: Poppins;
@@ -6,38 +7,167 @@ h1{
 }
 h2{
     margin:0;
-    font-family: Poppins;
+    font-family: "Red Hat Display";
     font-size: 2.5rem;
     font-weight: 600;
 }
 h3{
     margin:0;
-    font-family: Poppins;
+    font-family: "Red Hat Display";
     font-size: 2rem;
     font-weight: 500;
 }
 h4{
     margin:0;
-    font-family: Poppins;
-    font-size: 1.5rem;
+    font-family: "Red Hat Display";
+    font-size: 1.2rem;
     font-weight: 500;
 }
 h5{
     margin:0;
-    font-family: Poppins;
+    font-family: "Red Hat Display";
     font-size: 1rem;
     font-weight: 500;
 }
 h6{
     margin:0;
-    font-family: Poppins;
+    font-family: "Red Hat Display";
     font-size: 0.5rem;
     font-weight: 500;
 }
-
 p{
     margin:0;
-    font-family: Poppins;
+    font-family: "Red Hat Display";
     font-size: 1rem;
     font-weight: 400;
+}
+
+.math-type{
+    font-family: serif !important;
+    font-weight: 300;
+    color:#1d1d1d
+}
+
+/* nav */
+#nav-content > h4{
+    color:black;
+    font-size: 1.6rem;
+    margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    min-height:4rem; height:100%;
+    cursor: pointer;
+
+    display: grid;
+    align-items: center;
+    
+    border-bottom: 1px solid #00000021;
+    font-family: "Red Hat Display";
+    transition: background-color 300ms cubic-bezier(0.260, 0.050, 0.250, 1.000);
+    background-color: #fafafa;
+}
+#nav-content > h4 > a{
+    color:#313131;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: "Red Hat Display";
+    text-decoration: none;
+    cursor:pointer;
+    transition: all 200ms cubic-bezier(0.260, 0.050, 0.250, 1.000);
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+@media (hover: hover) {
+    #nav-content > h4:hover{
+        background-color: #222225;
+    }#nav-content > h4:hover > a{
+        color:#f1f1f1;
+    }
+}
+#nav-content > h4:active{
+    background-color: #222225;
+}#nav-content > h4:active > a{
+    color:#f1f1f1;
+}
+
+/* special view classes */
+.no-mobile-view{
+    display: none !important;
+} .only-mobile-view{
+    display: inline-block !important;
+} .no-low-height-view{
+    display: flex !important;
+}
+
+/* ==================== TABLET VIEW ==================== */
+
+/* medium */
+@media screen and (min-width: 900px) {
+    .no-mobile-view{
+        display: inline-block !important;
+    }.only-mobile-view{
+        display: none !important;
+    }
+
+    h4{
+        font-size: 1.5rem;
+    } #nav-content > h4{
+        margin-left: 1.5rem !important;
+        width: fit-content;
+        border:none;
+        width: fit-content; height:fit-content;
+        text-align: center;
+        background-color: transparent;
+    }#nav-content > h4 > a{
+        font-weight: 400;
+    }
+    @media (hover: hover) {
+        #nav-content > h4:hover{
+            background-color: transparent;
+        }#nav-content > h4:hover > a{
+            color: #ff7a00;
+            font-size: 1.8rem;
+            letter-spacing: 0.075rem;
+        }
+    }
+    #nav-content > h4:active{
+        background-color: transparent;
+    }#nav-content > h4:active > a{
+        color: #ff7a00;
+        font-size: 1.8rem;
+        letter-spacing: 0.075rem;
+    }
+}
+
+/* ==================== DESKTOP VIEW ==================== */
+
+/* large */
+@media screen and (min-width: 1300px) { 
+}
+
+/* ==================== LOW HEIGHT VIEW ==================== */
+
+/* low height */
+@media screen and (max-height: 575px) {
+    .plot-title{
+        font-size: 1.5rem;
+    }
+
+    h3{
+        font-size: 1.3rem;
+    }
+    h4{
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+    }
+
+    .mobile-nav-title{
+        font-size: 0.8rem;
+    }
+
+    .no-low-height-view{
+        display: none !important;
+    }
 }

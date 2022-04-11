@@ -3,46 +3,284 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>InteractiveGAN</title>
+    <title>NotA#</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
 
-    <script defer src="/__/firebase/9.6.10/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/9.6.10/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
+    <link rel="stylesheet" href="./assets/css/specialStates.css">    
     <link rel="stylesheet" href="./assets/css/font.css">    
     <link rel="stylesheet" href="./assets/css/main.css">    
+
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
   </head>
-  <body>
-    <div id="loading-container" style="width:100vw; height:100vh; display:flex; justify-content: center; align-items: center; flex-direction: column;
-                                      position:fixed; left:0; top:0; z-index: 999; background-color: #ffffff83; padding:0">
-      <section id="spinning-ring-containers" style="position: relative; width: 5rem; height: 5rem; display:flex; justify-content: center; align-items: center;">
-        <div id="ring3" style="border-color: #ffd220; scale: 0.7; transform: rotateX(10deg);" class="spinning-ring unselectable"></div>
-        <div id="ring2" style="border-color: #ffa620; scale: 0.8; transform: rotateY(30deg);" class="spinning-ring unselectable"></div>
-        <div id="ring1" style="border-color: #ff7f07; scale: 0.9; transform: rotateZ(40deg);" class="spinning-ring unselectable"></div>
-        <svg id="ring-check" height="100%" style="fill-rule:nonzero; clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
-        xml:space="preserve" width="120%"
-        viewBox="0 0 113.647 115.272"> 
-            <path id="ring-check-path"
-            class="unselectable"
-            style="fill:none; fill-opacity:1; stroke:#f87800;stroke-width:17;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1; opacity: 0;"
-            d="M -1.4931908,61.971512 31.213422,98.151387 97.86052,24.87238"/>
-        </svg>
+  <body style="overflow: hidden;">
+
+    <!--------------------------------- NAV BAR --------------------------------->
+    <nav class="mobile-nav" id="main-nav" style="position: fixed; top: 0; width:100%; height:4rem; z-index: 99999;
+    display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #00000024;">
+      <section id="nav-logo" style="display:flex; flex-direction: row; width: fit-content; height: fit-content; justify-content: center; align-items: center; cursor:pointer">
+        <img src="./assets/img/icon.svg" alt="logo" style="height:2rem; margin-right: 0.4rem;" class="unselectable">
+
+        <h4 style="color:black; font-size: 2rem; font-weight: 600; font-family: Poppins;" class="unselectable">
+          NotA<span style="color:#ff7a00;">#</span>
+        </h4>
       </section>
-      <h4 id="loader-status" style="position:absolute; margin: 0; transform: translateY(6rem); opacity: 0.6; width: 80%; text-align: center; white-space: pre-wrap;">Loading API...</h4>
+
+      <img
+      class="only-mobile-view"
+      id="menu-open-btn"
+      src="./assets/img/card-btn.svg"
+      style="height:2.5rem; position: absolute; right:1rem;"
+      alt="View more" draggable="false" ondragstart="return false;">
+
+      <section class="menu-hidden" id="nav-content">
+        <h4 class="menu-buttons" class="menu-buttons" id="about-nav-btn">
+          <a>
+            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🤔</span>
+            <span class="only-mobile-view mobile-nav-title">What am I looking at?</span>
+            <span class="no-mobile-view">What's this?</span>
+          </a>
+        </h4>
+
+        <h4 class="menu-buttons">
+          <a href="" target="_blank">
+            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🔥</span>
+            <span class="only-mobile-view mobile-nav-title">Read the Article I Wrote</span>
+            <span class="no-mobile-view">Read Article</span>
+          </a>
+        </h4>
+
+        <h4 class="menu-buttons">
+          <a href="" target="_blank">
+            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🚀</span>
+            <span class="only-mobile-view mobile-nav-title">Support me</span>
+            <span class="no-mobile-view">Support me</span>
+          </a>
+        </h4>
+
+        <!-- block at the bottom for copyright msg -->
+        <div class="only-mobile-view" style="height:9rem; background-color: #fafafa;"></div>
+      </section>
+    </nav>
+
+    <section id="full-page" style="transform: translateX(0);">
+      <div id="loading-container" style="width:100vw; height:100vh; display:flex; justify-content: center; align-items: center; flex-direction: column;
+                                        position:fixed; left:0; top:0; z-index: 999; background-color: #ffffff83; padding:0;
+                                        transition: opacity 500ms cubic-bezier(0.260, 0.050, 0.250, 1.000);">
+        <section id="spinning-ring-containers" style="position: relative; width: 5rem; height: 5rem; display:flex; justify-content: center; align-items: center;">
+          <div id="ring3" style="border-color: #ffd220;; transform: scale(0.75) rotateX(10deg);" class="spinning-ring unselectable"></div>
+          <div id="ring2" style="border-color: #ffa620; transform: scale(0.875) rotateY(30deg);" class="spinning-ring unselectable"></div>
+          <div id="ring1" style="border-color: #ff7f07; transform: scale(0.9) rotateZ(40deg);" class="spinning-ring unselectable"></div>
+          <svg id="ring-check" height="100%" style="fill-rule:nonzero; clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+          xml:space="preserve" width="120%"
+          viewBox="0 0 113.647 115.272"> 
+              <path id="ring-check-path"
+              class="unselectable"
+              style="fill:none; fill-opacity:1; stroke:#f87800;stroke-width:17;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1; opacity: 0;"
+              d="M -1.4931908,61.971512 31.213422,98.151387 97.86052,24.87238"/>
+          </svg>
+        </section>
+  
+        <section style="position:absolute; height: 50rem; transform: translateY(29rem); width: 80%; display: flex; justify-content: flex-start; align-items: center; flex-direction: column;">
+          <h4 id="loader-status" style="margin: 0; opacity: 0.5; text-align: center;">Loading APIs...</h4>
+          <progress id="load-bar" max="200" value="0" class="disable-hidden"></progress>
+          <h5 id="warn-time" style="margin-top: 1rem; opacity: 0.4; transition: opacity 400ms cubic-bezier(0.260, 0.050, 0.250, 1.000);" class="disable-hidden">
+            This may take a while depending on your location, internet quality and browser<br></h5>
+        </section>
+      </div>
+  
+      <div id="main-page" style="filter: blur(10px); transition: filter 300ms cubic-bezier(0.260, 0.050, 0.250, 1.000);
+                                width:100vw; height:100vh; background: #f2f2f2; background: linear-gradient(-100deg, #f2f2f2 0%, #eeeeee 100%);
+                                display: grid; flex-direction: column;">
+  
+        <section class="unselectable plot-containers" id="io" style="display:flex; width:100%; justify-self: center; align-self: center; flex-direction: row; justify-content: center;">
+          <!-- image display -->
+          <section id="generation-grid" style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h3 class="math-type plot-title" style="margin-bottom:1rem">AI Generation</h3>
+            <div class="img-display" id="pixel-display" style="position: relative;">
+              <!-- number lines -->
+              <div class="h-numberline-container numberline">
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">0</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">7</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">14</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">21</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">28</h4>
+                </div>
+              </div>
+              <div class="v-numberline-container numberline">
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">0</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">7</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">14</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">21</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">28</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <section class="unselectable plot-containers" id="latent-grid" style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h3 class="math-type plot-title" style="margin-bottom:1rem">Latent Space (Emulated)</h3>
+            <div class="img-display input-display" id="input-display" style="position: relative;">
+              <section id="input-box">
+                <h3 class="no-mobile-view" style="opacity: 0.3; font-weight: 600;">Hover Cursor Here</h3>
+                <h3 id="mobile-guide" class="only-mobile-view" style="opacity: 0.3; font-weight: 600; font-size: 1.5rem;">Press & Drag Here</h3>
+              </section>
+              <!-- number lines -->
+              <div class="h-numberline-container numberline">
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">0</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">40</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">80</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">120</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">160</h4>
+                </div>
+                <div class="h-scale">
+                  <div class="verticle-tick"></div>
+                  <h4 class="math-type h-scale-number">200</h4>
+                </div>
+              </div>
+              <div class="v-numberline-container numberline" style="transform: translate(-0.6rem, 1px);">
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">0</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">40</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">80</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">120</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">160</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+                <div class="v-scale">
+                  <h4 class="math-type v-scale-number">200</h4>
+                  <div class="horizontal-tick"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+  
+        </div>
+      </div>
+    </section>
+
+    <!-- clicking blocker for cards-->
+    <div id="clicker-blocker"
+         class="disable-hidden"
+         style="position: absolute; width: 100vw; height:100vh; background-color: transparent;
+                bottom:0; left:0; z-index: 99999;"></div>
+    <!-- popup cards -->
+    <div class="popup-card-container disable-hidden notransition" id="abt-card" style="transform: translateY(-7rem); opacity: 0;">
+      <section style="height:100%; display: flex; justify-content: space-evenly; align-items: center; flex-direction: column;">
+        
+        <section class="no-low-height-view" draggable="false" ondragstart="return false;"
+                  style="display:flex; flex-direction: row; width: fit-content; height: fit-content; justify-content: center; align-items: center;">
+          <img class="no-mobile-view" src="./assets/img/icon.svg" alt="logo" style="height:3rem; margin-right: 0.4rem;" class="unselectable">
+          <img class="only-mobile-view" src="./assets/img/icon.svg" alt="logo" style="height:4rem; margin-right: 0.4rem;" class="unselectable">
+          
+          <h4 class="no-mobile-view" style="color:black; font-size: 2.7rem; font-weight: 400; font-family: Poppins;" class="unselectable">
+            About
+          </h4>
+        </section>
+
+        <section style="height: fit-content; width: min(85%, 40rem);">
+          <h4 style="font-weight: 400; color:#3e3e3e; text-align: center; width: 100%;">
+            <strong style="font-family: Poppins;">
+              NotA<span style="color:#ff7a00;">#</span>
+            </strong> is an app that allows you to interact with the 
+            output of a deep convolutional geneartive adverserial neural network,
+            or <b>DCGANN</b>, in real time.
+          </h4>
+
+          <h4 class="no-mobile-view" style="font-weight: 400; color:#3e3e3e; text-align: center; margin-top: 1rem; width: 100%;">
+            This particular model was trained on the MNIST dataset with a custom designed DC architecture. To learn more, consider checking out the blog I wrote on this app 🔥!
+          </h4>
+          <h4 class="only-mobile-view" style="font-weight: 400; color:#3e3e3e; text-align: center; margin-top: 1rem; width: 100%;">
+            Consider checking out the blog I wrote about this app 🔥!
+          </h4>
+        </section>
+
+        <a class="unselectable" draggable="false" ondragstart="return false;" href="">
+          Read Here
+        </a>
+
+      </section>
+
+      <img src="./assets/img/card-btn.svg" class="close-card undraggable" ondragstart="return false;" draggable="false" alt="">
+
     </div>
 
-    <div id="main-page" style="filter: blur(13px)">
-      <h1>Hi mom</h1>
-      <p style="width:40%;">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid eligendi doloribus aliquam fugit ipsa nihil fugiat soluta suscipit laborum dolorum delectus optio aperiam, libero iusto neque? Totam repudiandae eligendi velit?
-      </p>
-    </div>
+    <a href="https://thelemonorange.com" target="_blank" class="logo-thing unselectable" style="position:absolute; text-decoration: none; color:black; right:0; bottom:0; margin: 0 0.5rem 0.5rem 0;
+                                                  display:flex; flex-direction: row; border-radius: 1.1rem; padding:0.75rem;">
+      <img src="./assets/img/logo.svg" class="no-mobile-view" alt="lemonorange" style="height:3.5rem; z-index: 9999;" class="unselectable">
+    </a>
     
-    <script defer src="./assets/minjs/anime.min.js"></script>
-    <script defer src="./assets/minjs/scrolltrigger.min.js"></script>
-    <script defer src="./assets/minjs/type.js"></script>
+    <p class="cr-msg no-mobile-view" style="position:absolute; bottom:0.3rem; justify-self: center; opacity: 0.3; z-index: 99999">
+      Copyright &copy; 2022 LemonOrange, All Rights Reserved
+    </p>
+    <p class="cr-msg only-mobile-view" style="position:absolute; bottom:0.75rem; justify-self: center; opacity: 0.3; z-index: 99999">
+      Copyright &copy; 2022 LemonOrange
+    </p>
     
-    <script defer src="./app.js"></script>
-    <script defer src="./loadanim.js"></script>
+    <!--
+      <script defer src="./src/loadanim.js" type="module"></script>;
+      <script defer src="./src/loadUI.js" type="module"></script>;
+      <script defer src="./src/app.js" type="module"></script>;
+      <script defer src="./src/eventHandlers.js" type="module"></script>;
+    -->
+
+    <script defer src="./dist/app.bundle.js"></script>
   </body>
 </html>

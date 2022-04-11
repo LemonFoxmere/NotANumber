@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20"
+   height="20"
+   viewBox="0 0 5.2916665 5.2916668"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   sodipodi:docname="cursor.svg"
+   inkscape:export-filename="/Users/lemonorange/websites/interactive-gan/public/assets/img/cursor.png"
+   inkscape:export-xdpi="163.2"
+   inkscape:export-ydpi="163.2"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     inkscape:snap-page="true"
+     inkscape:zoom="27.621664"
+     inkscape:cx="8.9965616"
+     inkscape:cy="10.010259"
+     inkscape:window-width="1440"
+     inkscape:window-height="790"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#595959;stroke:#3a3a3a;stroke-width:0.245836;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.50196081;fill-opacity:0.5"
+       id="path926"
+       cx="2.6458333"
+       cy="2.6458333"
+       r="2.4583616"
+       inkscape:export-filename="/Users/lemonorange/websites/interactive-gan/public/assets/img/path926.png"
+       inkscape:export-xdpi="163.2"
+       inkscape:export-ydpi="163.2" />
+  </g>
+</svg>

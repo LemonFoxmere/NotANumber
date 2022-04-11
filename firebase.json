@@ -1,25 +1,39 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
+  "hosting": [
+    {
+      "site": "interactive-dcgan",
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**",
+        "**/raw/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },{
+      "site": "latres-f53eae514faa",
+      "public": "raw",
+      "headers": [ {
+        "source" : "**",
+        "headers" : [ {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        }]
+      }]
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   },
   "emulators": {
     "hosting": {
       "host": "localhost",
-      "port": "5001"
+      "port": "4998"
     }
   }
 }

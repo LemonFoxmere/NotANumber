@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "interactive-dcgan"
+  },
+  "targets": {
+    "interactive-dcgan": {
+      "hosting": {
+        "latres-f53eae514faa": [
+          "latres-f53eae514faa"
+        ]
+      }
+    }
   }
 }

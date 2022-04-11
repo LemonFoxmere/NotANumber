@@ -1,6 +1,8 @@
-let animation_duration = 800
+import anime from 'animejs';
 
-let ring1_animation = anime({ // animate ring1 (biggest & slowest ring)
+const animation_duration = 800
+
+const ring1_animation = anime({ // animate ring1 (biggest & slowest ring)
     targets:"#ring1",
     rotateX: 360,
     rotateY: 360,
@@ -8,7 +10,7 @@ let ring1_animation = anime({ // animate ring1 (biggest & slowest ring)
     easing:"linear",
     loop:true,
 })
-let ring2_animation = anime({ // animate ring1 (biggest & slowest ring)
+const ring2_animation = anime({ // animate ring1 (biggest & slowest ring)
     targets:"#ring2",
     rotateX: -360,
     rotateY: -360,
@@ -17,7 +19,7 @@ let ring2_animation = anime({ // animate ring1 (biggest & slowest ring)
     loop:true,
     // direction:"alternate",
 })
-let ring3_animation = anime({ // animate ring1 (biggest & slowest ring)
+const ring3_animation = anime({ // animate ring1 (biggest & slowest ring)
     targets:"#ring3",
     rotateX: -360,
     duration: animation_duration,
@@ -25,7 +27,7 @@ let ring3_animation = anime({ // animate ring1 (biggest & slowest ring)
     loop:true,
 })
 
-let check_anim = anime({ // check mark animation
+const check_anim = anime({ // check mark animation
     targets: '#ring-check-path',
     strokeDashoffset: [anime.setDashoffset, 0],
     opacity: [0,1],
@@ -34,14 +36,14 @@ let check_anim = anime({ // check mark animation
     autoplay:false
 })
 
-let stop_spinning_anim = () => {
+export const stop_spinning_anim = (): void => {
     anime({
         targets:"#ring2, #ring3",
         opacity: 0,
-        duration: "1ms",
+        duration: 1,
         easing: "linear",
     })
-    document.getElementById("ring-check-path").style.opacity = 1
+    document.getElementById("ring-check-path")!.style.opacity = "1"
     ring1_animation.pause()
     check_anim.play()
     anime({
@@ -56,3 +58,4 @@ let stop_spinning_anim = () => {
         }
     })
 }
+

@@ -1,0 +1,16 @@
+.btn-menu-hidden{
+    transform: rotate(45deg) !important;
+}
+
+.menu-hidden{
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(10px);
+}
+
+.mobile-nav{
+    background-color: #fafafa !important;
+}
+@-moz-document url-prefix() {
+    .mobile-nav{background-color: #fafafa !important;}
+}
