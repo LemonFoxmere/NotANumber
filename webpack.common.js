@@ -14,11 +14,11 @@ module.exports = smp.wrap({
                 use: [{
                     loader: 'ts-loader',
                     options: {
-                        transpileOnly: true,
-                        experimentalWatchApi: true
+                        // transpileOnly: true,
+                        // experimentalWatchApi: true
                     }
                 }],
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
             },
         ],
     },
