@@ -135,3 +135,6 @@ raw/*
 
 # node
 node_modules/*
+
+# firebase json
+./firebase.json

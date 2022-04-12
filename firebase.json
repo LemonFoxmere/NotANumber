@@ -15,6 +15,16 @@
           "destination": "/index.html"
         }
       ]
+    },{
+      "site": "latres-f53eae514faa",
+      "public": "./raw",
+      "headers": [ {
+        "source" : "**",
+        "headers" : [ {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        }]
+      }]
     }
   ],
   "storage": {
