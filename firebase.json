@@ -2,7 +2,7 @@
   "hosting": [
     {
       "site": "interactive-dcgan",
-      "public": "public",
+      "public": "./public",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -17,7 +17,7 @@
       ]
     },{
       "site": "latres-f53eae514faa",
-      "public": "raw",
+      "public": "./raw",
       "headers": [ {
         "source" : "**",
         "headers" : [ {
