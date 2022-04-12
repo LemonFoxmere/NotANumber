@@ -1,7 +1,6 @@
 import { openDB } from "idb";
 import * as firebase from "firebase/app";
 import { initializeApp } from "firebase/app";
-import { getStorage, ref } from "firebase/storage";
 import { stop_spinning_anim } from "./loadanim";
 import { start_listening_input } from "./eventHandlers"
 // imports;
@@ -30,34 +29,6 @@ let init_data = new Promise((res:callbacks, rej:callbacks) => {
     // ==================;
     
     let cache_data:number[][][] = [];
-    const msgs = [
-        "Reticulating splines...",
-        "Generating witty dialogs...",
-        "Loading data to database...",
-        "Swapping time and space...",
-        "Tokenizing real life...",
-        "Bending a spoon...",
-        "Filtering morale...",
-        "Building neural networks...",
-        "Configuring hyperparameters...",
-        "Setting up differential girdle spring...",
-        "Preventing the side thumbling...",
-        "Heating up the vacuum tubes...",
-        "Sorting APIs...",
-        "Decrypting data keys...",
-        "Collecting garbage...",
-        "Pickling an egg...",
-        "<3",
-        "If you are waiting a long time, blame Firebase...",
-        "Crawling data from nowhere...",
-        "Initializing biodefense mode...",
-        "Forging Jesus 2.0...",
-        "Compiling C++ using C++...",
-        "Drafting server archetecture...",
-        "Sourcing loaded APIs...",
-        "Downloading more RAM...",
-        "Moving satellites into position...",
-    ];
     const firebaseConfig = {
         apiKey: "AIzaSyBjxepGtltXD9mYlpxvtMOdTHYbpglkjlg",
         authDomain: "interactive-dcgan.firebaseapp.com",
@@ -75,14 +46,10 @@ let init_data = new Promise((res:callbacks, rej:callbacks) => {
         initializeApp(firebaseConfig);
     };
     
-    // Get a reference to the storage service, which is used to create references in your storage bucket;
-    let storage = getStorage();
-    let storageRef = ref(storage);
-
     update_load_status_msg("Checking data...", "loader-status") // check if db exists;
     let dbExists = true;
     const dbPromise = openDB(dbName, 1, {
-        upgrade(db, oldVersion, newVersion, transaction) {
+        upgrade(db) {
             if (!db.objectStoreNames.contains('latentout')) {
                 dbExists = false;
                 db.createObjectStore('latentout', {keyPath: "x"});
@@ -92,7 +59,7 @@ let init_data = new Promise((res:callbacks, rej:callbacks) => {
 
     // TODO: function refactored from JS, still need checking
     let grep_data = (start_chunk:number, db:any) => {
-        return new Promise(async (res1:callbacks, rej1) => {
+        return new Promise(async (res1:callbacks, rej1?:callbacks) => {
             for(let i = start_chunk; i < 200; i++){
                 // >>> get path of file | TESTING CODE, COMMENT OUT FOR PRODUCTION;
                 let url = `http://127.0.0.1:5500/interactive-gan/raw/chunks/ganout-cnk-${i}.json`;

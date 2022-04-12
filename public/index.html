@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./assets/css/main.css">    
 
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
+
+    <script defer src="./dist/app.bundle.js"></script>
   </head>
   <body style="overflow: hidden;">
 
@@ -87,8 +89,8 @@
         <section style="position:absolute; height: 50rem; transform: translateY(29rem); width: 80%; display: flex; justify-content: flex-start; align-items: center; flex-direction: column;">
           <h4 id="loader-status" style="margin: 0; opacity: 0.5; text-align: center;">Loading APIs...</h4>
           <progress id="load-bar" max="200" value="0" class="disable-hidden"></progress>
-          <h5 id="warn-time" style="margin-top: 1rem; opacity: 0.4; transition: opacity 400ms cubic-bezier(0.260, 0.050, 0.250, 1.000);" class="disable-hidden">
-            This may take a while depending on your location, internet quality and browser<br></h5>
+          <h5 id="warn-time" style="margin-top: 1rem; opacity: 0.4; transition: opacity 400ms cubic-bezier(0.260, 0.050, 0.250, 1.000); text-align: center;" class="disable-hidden">
+            This may take a while depending on your location, internet connection quality and browser<br>(Or blame FireBase (._. ))</h5>
         </section>
       </div>
   
@@ -253,7 +255,7 @@
           </h4>
         </section>
 
-        <a class="unselectable" draggable="false" ondragstart="return false;" href="">
+        <a class="unselectable" draggable="false" ondragstart="return false" href="">
           Read Here
         </a>
 
@@ -274,7 +276,5 @@
     <p class="cr-msg no-mobile-view unselectable" style="position:absolute; bottom:0.3rem; justify-self: center; opacity: 0.3; z-index: 99999">
       Copyright &copy; 2022 LemonOrange, All Rights Reserved
     </p>
-
-    <script defer src="./dist/app.bundle.js"></script>
   </body>
 </html>

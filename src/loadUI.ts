@@ -1,5 +1,5 @@
 import anime from 'animejs';
-import { callbacks, sleep } from "./app";
+import { callbacks } from "./app";
 
 // start putting html of pixels in
 for(let i = 0; i < 28; i++){
