@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css">
 
     <link rel="stylesheet" href="./assets/css/specialStates.css">    
     <link rel="stylesheet" href="./assets/css/font.css">    
@@ -35,10 +36,10 @@
       style="height:2.5rem; position: absolute; right:1rem;"
       alt="View more" draggable="false" ondragstart="return false;">
 
-      <section class="menu-hidden" id="nav-content">
+      <section class="menu-hidden unselectable" id="nav-content" draggable="false" ondragstart="return false;">
         <h4 class="menu-buttons" class="menu-buttons" id="about-nav-btn">
           <a>
-            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🤔</span>
+            <span class="only-mobile-view mobile-nav-emoji" style="margin-bottom: 1%; font-size: 3rem;">🤔</span>
             <span class="only-mobile-view mobile-nav-title">What am I looking at?</span>
             <span class="no-mobile-view">What's this?</span>
           </a>
@@ -46,7 +47,7 @@
 
         <h4 class="menu-buttons">
           <a href="" target="_blank">
-            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🔥</span>
+            <span class="only-mobile-view mobile-nav-emoji" style="margin-bottom: 1%; font-size: 3rem;">🔥</span>
             <span class="only-mobile-view mobile-nav-title">Read the Article I Wrote</span>
             <span class="no-mobile-view">Read Article</span>
           </a>
@@ -54,7 +55,7 @@
 
         <h4 class="menu-buttons">
           <a href="" target="_blank">
-            <span style="margin-bottom: 1%; font-size: 3rem;" class="only-mobile-view">🚀</span>
+            <span class="only-mobile-view mobile-nav-emoji" style="margin-bottom: 1%; font-size: 3rem;">🚀</span>
             <span class="only-mobile-view mobile-nav-title">Support me</span>
             <span class="no-mobile-view">Support me</span>
           </a>
@@ -262,24 +263,17 @@
 
     </div>
 
-    <a href="https://thelemonorange.com" target="_blank" class="logo-thing unselectable" style="position:absolute; text-decoration: none; color:black; right:0; bottom:0; margin: 0 0.5rem 0.5rem 0;
-                                                  display:flex; flex-direction: row; border-radius: 1.1rem; padding:0.75rem;">
-      <img src="./assets/img/logo.svg" class="no-mobile-view" alt="lemonorange" style="height:3.5rem; z-index: 9999;" class="unselectable">
+    <!-- logo watermark -->
+    <a href="https://thelemonorange.com" target="_blank" class="logo-thing unselectable" style="position:absolute; text-decoration: none; color:black; margin: 0 0.5rem 0.5rem 0;
+                                                  display:flex; flex-direction: row; align-items: center; border-radius: 1.1rem; padding:0.75rem;">
+      <h4 class="only-mobile-view" style="color: #939393; margin-right:0.25rem; margin-bottom: 0.2rem; font-weight: 300; font-family: 'Red Hat Display';">Made with
+        <span style="font-family: Fira Code, monospace;"><3</span> by </h4>
+      <img class="logo-img" src="./assets/img/logo.svg" alt="lemonorange" style="z-index: 9999;" class="unselectable">
     </a>
     
-    <p class="cr-msg no-mobile-view" style="position:absolute; bottom:0.3rem; justify-self: center; opacity: 0.3; z-index: 99999">
+    <p class="cr-msg no-mobile-view unselectable" style="position:absolute; bottom:0.3rem; justify-self: center; opacity: 0.3; z-index: 99999">
       Copyright &copy; 2022 LemonOrange, All Rights Reserved
     </p>
-    <p class="cr-msg only-mobile-view" style="position:absolute; bottom:0.75rem; justify-self: center; opacity: 0.3; z-index: 99999">
-      Copyright &copy; 2022 LemonOrange
-    </p>
-    
-    <!--
-      <script defer src="./src/loadanim.js" type="module"></script>;
-      <script defer src="./src/loadUI.js" type="module"></script>;
-      <script defer src="./src/app.js" type="module"></script>;
-      <script defer src="./src/eventHandlers.js" type="module"></script>;
-    -->
 
     <script defer src="./dist/app.bundle.js"></script>
   </body>
