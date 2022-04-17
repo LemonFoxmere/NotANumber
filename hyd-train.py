@@ -39,6 +39,9 @@ epoch = 10
 lr = 1e-4
 disc_lr = 1e-4
 
+# FOR DISCRIMINATOR
+# %% codecell
+
 # disc model
 def make_discriminator_model():
     model = keras.Sequential()
@@ -55,35 +58,34 @@ def make_discriminator_model():
     model.add(keras.layers.Dense(500, activation = "relu"))
     model.add(keras.layers.Dropout(0.3))
     model.add(keras.layers.Dense(100, activation = "relu"))
-    model.add(keras.layers.Dropout(0.4))
+    model.add(keras.layers.Dropout(0.2))
     model.add(keras.layers.Dense(30, activation = "relu"))
-    model.add(keras.layers.Dropout(0.4))
+    model.add(keras.layers.Dropout(0.2))
     model.add(keras.layers.Dense(1, activation = "softmax"))
 
     return model
 
 disc_model = make_discriminator_model()
-disc_model(np.random.rand(1,28,28,1).astype(np.float32)).numpy()
 disc_opt = Adam(learning_rate=disc_lr)
 disc_model.compile(disc_opt, "binary_crossentropy")
 
 def get_disc_loss(real_pred, gen_pred):
-    real_pred = real_pred
-    gen_pred = gen_pred
     real_loss = tf.keras.losses.BinaryCrossentropy()(tf.ones_like(real_pred), real_pred)
     gen_loss = tf.keras.losses.BinaryCrossentropy()(tf.zeros_like(gen_pred), gen_pred)
     return real_loss + gen_loss
 
+# FOR GENERATOR
+# %% codecell
+
 # generator
 def make_generator_model():
     model = keras.Sequential()
-    model.add(keras.layers.Dense(7*7*64, input_shape=(4,)))
+    model.add(keras.layers.Dense(7*7*64, input_shape=(2,100,)))
+    model.add(keras.layers.BatchNormalization())
     model.add(keras.layers.LeakyReLU())
 
     model.add(keras.layers.Dense(7*7*128))
-    model.add(keras.layers.LeakyReLU())
-
-    model.add(keras.layers.Dense(7*7*256))
+    model.add(keras.layers.BatchNormalization())
     model.add(keras.layers.LeakyReLU())
 
     model.add(keras.layers.Reshape((7,7,256)))
@@ -110,17 +112,23 @@ gen_opt = Adam(learning_rate=lr)
 gen_model.compile(gen_opt, "binary_crossentropy")
 
 def get_gen_loss(gen_pred):
-    gen_pred = gen_pred
     return tf.keras.losses.BinaryCrossentropy(from_logits=True)(tf.ones_like(gen_pred), gen_pred)
 
-# generate input shape
-def get_random_input(size, latent=np.array([None]), type="float32"):
-    if(latent.any() == None): latent = np.random.randn(size, 2) # if no custom latent space defined
 
-    new_col_1 = [(a+b)/2 for a,b in latent] # generate extra columns for ls
-    new_col_2 = [(a*b) for a,b in latent]
-    latent = np.insert(latent, latent.shape[1], new_col_1,axis=1)
-    latent = np.insert(latent, 0, new_col_2,axis=1)
+
+# TRAINING
+# %% codecell
+
+# generate input shape
+def get_random_input(size, custom_location=None, type="float32"):
+    if(custom_location == None):
+        latent = np.random.randn(size, 2, 100) # if no custom latent space defined
+    else: # if no custom latent space defined
+        latent = np.array([
+            [np.sin(custom_location[0] * (i)/10) for i in range(100)],
+            [np.cos(custom_location[1] * (i)/10) for i in range(100)],
+        ])
+        latent = np.reshape(latent, (1,2,100))
 
     return latent.astype("float32")
 
@@ -177,18 +185,16 @@ def train(dataset, epochs):
 
 train(train_dataset,epoch) # train architecture
 
-x = 2
-y = -2
+x = -5
+y = -5
 frames = -1
-inc = 4/200 # interval / frame target
-
-
+inc = 10/200 # interval / frame target
 
 for i in tqdm(range(200)):
     with tf.device('/device:GPU:0'):
-        lsi = get_random_input(1, latent=np.array([[x,y]]))
+        lsi = get_random_input(1, custom_location=(x,y))
 
-        x -= inc
+        x += inc
         y += inc
         frames += 1
 
