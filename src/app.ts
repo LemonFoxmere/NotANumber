@@ -1,6 +1,4 @@
 import { openDB } from "idb";
-import * as firebase from "firebase/app";
-import { initializeApp } from "firebase/app";
 import { stop_spinning_anim } from "./loadanim";
 import { start_listening_input } from "./eventHandlers"
 // imports;
@@ -29,22 +27,10 @@ let init_data = new Promise((res:callbacks, rej:callbacks) => {
     // ==================;
     
     let cache_data:number[][][] = [];
-    const firebaseConfig = {
-        apiKey: "AIzaSyBjxepGtltXD9mYlpxvtMOdTHYbpglkjlg",
-        authDomain: "interactive-dcgan.firebaseapp.com",
-        projectId: "interactive-dcgan",
-        storageBucket: "interactive-dcgan.appspot.com",
-        messagingSenderId: "1067261589170",
-        appId: "1:1067261589170:web:33f2ef22537dbefbbafbab"
-    };
 
     const dbName = 'ganout-db';
 
     // ==================;
-
-    if (firebase.getApps.length === 0) {
-        initializeApp(firebaseConfig);
-    };
     
     update_load_status_msg("Checking data...", "loader-status") // check if db exists;
     let dbExists = true;
