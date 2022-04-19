@@ -48,10 +48,10 @@ let init_data = new Promise((res:callbacks, rej:callbacks) => {
         return new Promise(async (res1:callbacks, rej1?:callbacks) => {
             for(let i = start_chunk; i < 200; i++){
                 // >>> get path of file | TESTING CODE, COMMENT OUT FOR PRODUCTION;
-                let url = `http://127.0.0.1:5500/interactive-gan/raw/chunks/ganout-cnk-${i}.json`;
+                // let url = `http://127.0.0.1:5500/interactive-gan/raw/chunks/ganout-cnk-${i}.json`;
                 
                 // >>> get path of file | PRODUCTION CODE, COMMENT OUT FOR TESTING;
-                // let url = `https://latres-f53eae514faa.firebaseapp.com/chunks/ganout-cnk-${i}.json`;
+                let url = `https://latres-f53eae514faa.firebaseapp.com/chunks/ganout-cnk-${i}.json`;
                 
                 // fetch data;
                 let resp = await fetch(url);
